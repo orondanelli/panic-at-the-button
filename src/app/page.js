@@ -54,7 +54,8 @@ const takeAction = async (action) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(action),
-    });
+        })
+      console.log(response.json())
       } catch (error) {
         console.log(error)
       }
@@ -79,7 +80,7 @@ export default function Home() {
             <Button size="xs" variant="light" icon={ArrowRightIcon} iconPosition="right" onClick={() => takeAction(item.action)}>
               Ejecutar
             </Button>
-          </Flex>
+          </Flex>  
         </Card>
       ))}
       </Grid>
