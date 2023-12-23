@@ -1,7 +1,7 @@
 'use client'
 import { Card, Text, Button, Icon, Flex, Title, Grid} from "@tremor/react";
-
 import { LightBulbIcon, LinkIcon, BeakerIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
+
 
 const categories = [
   {
@@ -45,26 +45,19 @@ const categories = [
 ];
 
 const takeAction = async (action) => {
-  try {
-    console.log(action.method)
-    console.log(action.endpoint)
-    console.log(action.body)
-
-    const response = await fetch(action.endpoint, {
+  switch (action.via) {
+    case 'API': 
+      try {
+        const response = await fetch('/api/execute/', {
       method: action.method,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(action.body),
+      body: JSON.stringify(action),
     });
-
-    if (response.ok) {
-      console.log('Acción ejecutada exitosamente:', action);
-    } else {
-      console.error('Error al ejecutar la acción:', action);
-    }
-  } catch (error) {
-    console.error('Error al ejecutar la acción:', error);
+      } catch (error) {
+        console.log(error)
+      }
   }
 };
 
