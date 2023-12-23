@@ -1,4 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+export const config = {
+  runtime: 'nodejs',
+};
 import { exec } from 'child_process';
 
 export default async function handler(req, res) {
