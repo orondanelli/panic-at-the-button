@@ -48,7 +48,7 @@ const takeAction = async (action) => {
   switch (action.via) {
     case 'API': 
       try {
-        const response = await fetch('/api/execute/', {
+        const response = await fetch('https://panic-at-the-button-api-still-tree-8102.fly.dev/actions', {
       method: action.method,
       headers: {
         'Content-Type': 'application/json',
